@@ -1,0 +1,11 @@
+<?php
+    if($_GET['op']=='m'){
+        header("Location:modificar.php?IdEmpleado=".$_GET['IdEmpleado']);
+    }
+    if($_GET['op']=="b"){
+        header("Location:borrar.php?IdEmpleado=".$_GET['IdEmpleado']);
+    }
+    if($_GET['op']=="a"){
+        header("Location:alta.php");
+    }
+?>
