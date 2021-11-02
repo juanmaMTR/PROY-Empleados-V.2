@@ -1,0 +1,13 @@
+section{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+p{
+    background-color: darkgreen;
+    color: white;
+    width: 300px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}

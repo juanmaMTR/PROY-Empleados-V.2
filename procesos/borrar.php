@@ -14,6 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/borrar.css">
         <title>Borrar</title>
     </head>
     <body>
@@ -39,12 +40,12 @@
                     $components=parse_url($url);
                     parse_str($components['query'],$results);
                     //echo ($results['dni']);
-                    echo '<p>¿Desea borrar los datos de este perfil?</p>';
+                    echo '<h3>¿Desea borrar los datos de este perfil?</h3>';
                     $consulta="SELECT * FROM empleados WHERE IdEmpleado LIKE '".$results['IdEmpleado']."';";
                     //$resultado=$conexion->query($consulta);
                     $resultado=$operaciones->consultar($consulta);
                     while($fila=$resultado->fetch_assoc()){
-                        echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
+                        echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp</p>';
                     }
                     
                     echo '<form name="borrar" action="#" method="POST">';
