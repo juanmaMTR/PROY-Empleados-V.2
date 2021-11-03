@@ -5,8 +5,8 @@
     require 'config_bd.php'; //Llamo al archivo donde están las constantes
     $conexion=mysqli_connect(SERVIDORBD,USUARIO,CONTRASENIA,BASEDATOS); //Realizo la conexión con la base de datos
     */
-    require 'operaciones_bd.php';
-    $operaciones=new Operaciones();
+    require 'operaciones_bd.php'; //Llamo al archivo donde están las operaciones
+    $operaciones=new Operaciones(); //Inicializo la clase Operaciones
 ?>
 <html lang="es">
     <head>
@@ -36,14 +36,12 @@
             <section>
                 <?php
                     $url=$_SERVER['REQUEST_URI'];
-                    //echo $url;
                     $components=parse_url($url);
-                    parse_str($components['query'],$results);
-                    //echo ($results['dni']);
+                    parse_str($components['query'],$results); //Una forma de conseguir el id que paso por url
                     echo '<h3>¿Desea borrar los datos de este perfil?</h3>';
                     $consulta="SELECT * FROM empleados WHERE IdEmpleado LIKE '".$results['IdEmpleado']."';";
                     //$resultado=$conexion->query($consulta);
-                    $resultado=$operaciones->consultar($consulta);
+                    $resultado=$operaciones->consultar($consulta); //Llamo al método consultar que está en la clase Operaciones
                     while($fila=$resultado->fetch_assoc()){
                         echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp</p>';
                     }
@@ -55,7 +53,7 @@
                     if(isset($_POST['aceptar'])){
                         $consulta="DELETE FROM empleados WHERE IdEmpleado LIKE '".$results['IdEmpleado']."';";
                         //$resultado=$conexion->query($consulta);
-                        $resultado=$operaciones->consultar($consulta);
+                        $resultado=$operaciones->consultar($consulta); //Llamo al método consultar que está en la clase Operaciones
                         echo '<a href="../index.php">Volver al índice</a>';
                     }
                     if(isset($_POST['cancelar'])){
@@ -71,5 +69,5 @@
     </body>
 </html>
 <?php
-    $operaciones->cerrarconexion();
+    $operaciones->cerrarconexion(); //Lamo al método cerrarconexion que está en la clase Operaciones
 ?>

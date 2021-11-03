@@ -5,8 +5,8 @@
     require 'procesos/config_bd.php'; //Llamo al archivo donde están las constantes
     $conexion=mysqli_connect(SERVIDORBD,USUARIO,CONTRASENIA,BASEDATOS); //Realizo la conexión con la base de datos
     */
-    require 'procesos/operaciones_bd.php';
-    $operaciones=new Operaciones();
+    require 'procesos/operaciones_bd.php'; //Llamo al archivo donde están las operaciones
+    $operaciones=new Operaciones(); //Inicializo la clase Operaciones
 ?>
 <html lang="es">
     <head>
@@ -50,7 +50,7 @@
                             $consulta="SELECT * FROM empleados WHERE DNI LIKE '".$_POST['dni']."%' ORDER BY Nombre ".$_POST['filtrado'].";";
                         }
                         //$resultado=$conexion->query($consulta);
-                        $resultado=$operaciones->consultar($consulta);
+                        $resultado=$operaciones->consultar($consulta); //Llamo al método consultar que está en la clase Operaciones
                         while($fila=$resultado->fetch_assoc()){
                             echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
                             echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=b">Borrar</a>&nbsp&nbsp&nbsp';
@@ -58,7 +58,6 @@
                         }
                         
                     }
-                    //echo '<p><a href="procesos/operaciones_empleados.php?op=a">Alta Empleado</a></p>';
                 ?>
             </section>
         </aside>

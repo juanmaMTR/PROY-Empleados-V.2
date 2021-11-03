@@ -6,19 +6,23 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 body{
-    width: 1200px;
+    /*width: 1200px;*/
+    width: 84.32888264230499%; /*Cojo como 100% la medida del html que es 1423px*/
     margin: auto;
 }
 header{
-    width: 1100px;
+    /*width: 1100px;*/
+    width: 91.66666666666667%; /*Cojo como 100% los 1200px del body*/
     height: 100px;
     background-color: gold;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 #horizontal{
-    width: 1100px;
+    /*width: 1100px;*/
+    width: 91.66666666666667%; /*Cojo como 100% los 1200px del body*/
     height: 50px;
     background-color: skyblue;
     display: flex;
@@ -26,24 +30,31 @@ header{
     align-items: center;
 }
 aside{
-    width: 1100px;
-    margin: 20px;
+    /*width: 1100px;*/
+    width: 91.66666666666667%; /*Cojo como 100% los 1200px del body*/
+    /*margin: 20px;*/
+    margin: 1.666666666666667%; /*Cojo como 100% los 1200px del body*/
 }
 #vertical{
-    width: 230px;
-    padding: 10px;
+    /*width: 230px;*/
+    width: 20.90909090909091%; /*Cojo como 100% los 1100px del aside*/
+    /*padding: 10px;*/
+    padding: 0.9090909090909091%; /*Cojo como 100% los 1100px del aside*/
     background-color: skyblue;
     float: left;
 }
 section{
-    width: 770px;
-    padding: 20px;
+    /*width: 770px;*/
+    width: 70%; /*Cojo como 100% los 1100px del aside*/
+    /*padding: 20px;*/
+    padding: 1.818181818181818%; /*Cojo como 100% los 1100px del aside*/
     background-color: darkseagreen;
     min-height: 490px;
     float: left;
 }
 footer{
-    width: 1100px;
+    /*width: 1100px;*/
+    width: 91.66666666666667%; /*Cojo como 100% los 1200px del body*/
     height: 100px;
     background-color: gold;
     display: flex;
@@ -61,7 +72,8 @@ nav ul li a:hover{
 }
 input[type=submit],input[type=reset] {
     text-decoration: none;
-    padding: 3px;
+    /*padding: 3px;*/
+    padding: 0.3896103896103896%; /*Cojo como 100% los 770px del section*/
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     background-color: #EBF737;
