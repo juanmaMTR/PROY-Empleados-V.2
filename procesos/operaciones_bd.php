@@ -22,12 +22,16 @@
             }
             //$resultado=$conexion->query($consulta);
             $resultado=$this->consultar($consulta); //Llamo al método consultar que está en la clase Operaciones
-            
-            while($fila=$resultado->fetch_assoc()){
-                echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
-                echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=b">Borrar</a>&nbsp&nbsp&nbsp';
-                echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=m">Modificar</a></p>';
+            if($resultado->num_rows==0){
+                echo 'No hay ningún empleado con este DNI.';
+            }else{
+                while($fila=$resultado->fetch_assoc()){
+                    echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
+                    echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=b">Borrar</a>&nbsp&nbsp&nbsp';
+                    echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=m">Modificar</a></p>';
+                }
             }
+            
             
         }
         //Función que hace la búsqueda del listado por Nombre
@@ -40,15 +44,19 @@
                 echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=b">Borrar</a>&nbsp&nbsp&nbsp';
                 echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=m">Modificar</a></p>';
             }*/
-            $fila=$resultado->fetch_array(MYSQLI_ASSOC);
-            if(!$fila){
+            //$fila=$resultado->fetch_array(MYSQLI_ASSOC);
+            if($resultado->num_rows==0){
                 echo 'No hay ningún empleado con este nombre.';
             }
-            do{
-                echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
-                echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=b">Borrar</a>&nbsp&nbsp&nbsp';
-                echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=m">Modificar</a></p>';
-            }while($fila=$resultado->fetch_array(MYSQLI_ASSOC))
+            else
+            {
+                while($fila=$resultado->fetch_array(MYSQLI_ASSOC)){
+                    echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
+                    echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=b">Borrar</a>&nbsp&nbsp&nbsp';
+                    echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=m">Modificar</a></p>';
+                }
+            }
+            
             
         }
         
