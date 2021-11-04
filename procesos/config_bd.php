@@ -7,6 +7,9 @@
 
     //Constantes para conectar mediante el servidor
     /*
-    define('SERVIDORBD',)
+    define('SERVIDORBD','2daw.esvirgua.com');
+    define('USUARIO','user2daw_18');
+    define('CONTRASENIA','x$FIK=b7qFQS');
+    define('BASEDATOS','user2daw_BD1-18');
     */
 ?>
