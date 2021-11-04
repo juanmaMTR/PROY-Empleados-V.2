@@ -33,17 +33,17 @@
                 </ul>
             </nav>
             <section>
-                <form action="#" method="post">
+                <!--form action="#" method="post">
                     <label for="dni">DNI: </label>
                     <input type="text" name="dni" id="dni"/>
                     <select name="filtrado" id="filtrado">
                         <option value="ASC">Nombre (A-Z)</option>
                         <option value="DESC">Nombre (Z-A)</option>
                     </select>
-                    <input type="submit" value="Listar">
+                    <input type="submit" value="Listar" name="DNI">
                 </form>
-                <?php
-                    if($_POST){
+                <?php/*
+                    if($_POST['DNI']){
                         if(trim($_POST['dni'])==""){
                             $consulta="SELECT * FROM empleados ORDER BY Nombre ".$_POST['filtrado'].";";
                         }else{
@@ -57,6 +57,39 @@
                             echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=m">Modificar</a></p>';
                         }
                         
+                    }
+                */?>
+                <form action="#" method="post">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre"/>
+                    <input type="submit" value="Listar" name="Nombre">
+                </form>
+                <?php/*
+                    if($_POST['Nombre']){
+                        if($_POST['nombre']){
+                            $consulta="SELECT * FROM empleados WHERE Nombre LIKE '".$_POST['nombre']."';";
+                        }
+                        $resultado=$operaciones->consultar($consulta);
+                        while($fila=$resultado->fetch_assoc()){
+                            echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
+                        }
+                    }
+                */?>-->
+                <form action="#" method="post">
+                    <select name="opcion" id="opcion">
+                        <option value="0">DNI</option>
+                        <option value="1">Nombre</option>
+                    </select>
+                    <input type="text" name="busqueda" id="busqueda"/>
+                    <input type="submit" value="Listar" />
+                </form>
+                <?php
+                    if($_POST){
+                        if($_POST['opcion']==0){
+                            $operaciones->busquedadni();
+                        }else{
+                            $operaciones->busquedanombre();
+                        }
                     }
                 ?>
             </section>
