@@ -23,7 +23,9 @@
             //$resultado=$conexion->query($consulta);
             $resultado=$this->consultar($consulta); //Llamo al método consultar que está en la clase Operaciones
             if($resultado->num_rows==0){
-                echo 'No hay ningún empleado con este DNI.';
+                if($this->error()==0){
+                    echo 'No hay ningún empleado que coincida con ese DNI.';
+                }
             }else{
                 while($fila=$resultado->fetch_assoc()){
                     echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
@@ -46,7 +48,10 @@
             }*/
             //$fila=$resultado->fetch_array(MYSQLI_ASSOC);
             if($resultado->num_rows==0){
-                echo 'No hay ningún empleado con este nombre.';
+                
+                if($this->error()==0){
+                    echo 'No hay ningún empleado que coincida con ese nombre.';
+                }
             }
             else
             {
@@ -57,6 +62,11 @@
                 }
             }
             
+            
+        }
+        function error(){
+            //echo $this->conexion->errno;
+            return $this->conexion->errno;
             
         }
         
