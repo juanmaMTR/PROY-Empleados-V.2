@@ -27,11 +27,30 @@
                     echo 'No hay ningún empleado que coincida con ese DNI.';
                 }
             }else{
+                /*echo 
+                '
+                    <table>
+                        <tr>
+                            <td>DNI</td>
+                            <td>Nombre</td>
+                            <td>Borrar</td>
+                            <td>Modificar</td>
+                        </tr>
+                ';*/
                 while($fila=$resultado->fetch_assoc()){
                     echo '<p>'.$fila['DNI'].': '.$fila['Nombre'].'&nbsp&nbsp&nbsp';
                     echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=b">Borrar</a>&nbsp&nbsp&nbsp';
                     echo '<a href="procesos/operaciones_empleados.php?IdEmpleado='.$fila['IdEmpleado'].'&op=m">Modificar</a></p>';
+                    /*echo 
+                    '
+                        <tr>
+                            <td>'.$fila['DNI'].'</td>
+                            <td>'.$fila['Nombre'].'</td>
+                            <td><img src="https://img.icons8.com/ios/50/000000/delete-forever--v1.png"/></td>
+                        </tr>
+                    ';*/
                 }
+                //echo '</table>';
             }
             
             
